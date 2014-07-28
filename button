@@ -1,0 +1,27 @@
+-(void)creatButtonFrameWithArray:(NSMutableArray *)array
+{
+    UIButton *btn = nil;
+    
+    for (int i = 0; i < array.count; i++) {
+        
+        btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        if (i < 4) {
+        
+            btn.frame = CGRectMake(i*(WIDTH + 8) + 10, HEIGHT, WIDTH, HEIGHT);
+        }
+        else
+        {
+            btn.frame = CGRectMake((i%4) * (WIDTH + 8) + 10, (HEIGHT + 20) * (i/4) + HEIGHT, WIDTH, HEIGHT);
+        }
+        btn.backgroundColor = [UIColor brownColor];
+        [btn setTitle:[array objectAtIndex:i] forState:UIControlStateNormal];
+        
+        [self.view addSubview:btn];
+    }
+    
+    UIButton *customBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    customBtn.frame = CGRectMake(btn.frame.origin.x + WIDTH + 10, btn.frame.origin.y, WIDTH, HEIGHT);
+    customBtn.backgroundColor = [UIColor redColor];
+    [self.view addSubview:customBtn];
+}
